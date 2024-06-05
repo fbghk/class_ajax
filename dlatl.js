@@ -14,7 +14,7 @@ serviceKey=${keyName}&numOfRows=10&pageNo=1`
 console.log(example)
 
 // `http://apis.data.go.kr/6300000/eventDataService/eventDataItemJson
-// ?
+// 
 // serviceKey=인증키(URL-Encode)
 // &
 // eventSeq=10423`
