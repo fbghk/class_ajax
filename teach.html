@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    const xhr = new XMLHttpRequest();
-    console.dir(xhr);
-    let requestMethod = "GET";
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const xhr = new XMLHttpRequest();
+      console.dir(xhr);
+      let requestMethod = "GET";
 
-    const keyName = "cI4AXgrTB0ysM8Rn01vy6q2u1edtzrl1b1aeyqtRsBtBIu3QJHsibkHBpe4MkJE%2FmMy%2B0veonIC65ssZPaERLA%3D%3D";
-    const requestUrl = `http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?
-serviceKey=${keyName}&numOfRows=10&pageNo=1`;
+      const keyName =
+        "4P6jmEbQHUbppbdiKfS%2FU%2BHVV3OqYvJwfn3bi%2FNYAK2cZaLTLIHsFPOFX3ltgeJvPZzUx09wpogScmOg7IwC6Q%3D%3D";
 
-    xhr.open(requestMethod, requestUrl. true);
-    xhr.send();
+      const requestUrl = `
+      http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?serviceKey=${keyName}&numOfRows=10&pageNo=1`;
 
-    xhr.addEventListener('load', () => {
-        if(xhr.status === 200){
-          console.log("200코드는 성공");
-          console.dir(xhr.responseText)
-          const result = xhr.responseText;
+      xhr.open(requestMethod, requestUrl, true);
+      xhr.send();
 
-          console.dir(typeof(result));
+      xhr.addEventListener('load', () => {
+        if(xhr.status === 200) {
+          console.log("200 코드는 성공 코드이다.");
+          // console.dir(xhr.responseText);  
+          const result = JSON.parse(xhr.responseText);
+          console.dir(typeof(result)); 
           console.dir(result);
           console.dir(result.msgBody);
-          console.dir(result.msgBody[0]);
-          console.dir(result.msgBody[0].title);
-
-          // const root = document.getElementById('root');
-
-          // result.msgBody.forEach((item) => {
-          //   lists.push(li)
-          // });
-
+          console.log(result.msgBody[0]);
+          console.log(result.msgBody[0].title);   // console.log("test");
         }
-      })
-    
-  </script>
-</body>
+      });
+    </script>
+  </body>
 </html>
