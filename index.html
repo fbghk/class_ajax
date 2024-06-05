@@ -7,7 +7,9 @@
   <title>Document</title>
 </head>
 <body>
+  <div id="root"></div>
   <script>
+    const getconcert = () => {
      const xhr = new XMLHttpRequest();
       let requestMethod = "GET"
       const keyName = `cI4AXgrTB0ysM8Rn01vy6q2u1edtzrl1b1aeyqtRsBtBIu3QJHsibkHBpe4MkJE%2FmMy%2B0veonIC65ssZPaERLA%3D%3D`
@@ -15,7 +17,7 @@
       xhr.open(requestMethod, `http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?
       serviceKey=${keyName}&numOfRows=10&pageNo=1`, true)
       // console.dir(xhr);
-      xhr.send();
+      
       xhr.addEventListener("load", () => {
         if(xhr.status === 200){
           console.log("데이터 받은 후 조회");
@@ -27,26 +29,24 @@
           const result2 = result.msgBody;
           
           const dkshel = [];
-            for(const element of result2){
+          for(const element of result2){
             dkshel.push(element.title);
           };
-          console.log(dkshel);
-          // const testresult = test();
-          // console.log(testresult);
           
-          // const root = document.getElementById("root");
-          // const ul = document.createElement("ul");
-          // testresult.forEach((rufrhk) => { 
-          //   const li = document.createElement("li");
-          //   li.textContent = rufrhk;
-          //   ul.appendChild(li);
-          // });
-          // root.appendChild(ul);
+          const root = document.getElementById("root");
+          const ul = document.createElement("ul");
+          
+          dkshel.forEach((rufrhk) => { 
+            const li = document.createElement("li");
+            li.textContent = rufrhk;
+            ul.appendChild(li);
+          });
+          root.appendChild(ul);
         }
       });
-
-    
-    
+      xhr.send();
+    };
+    getconcert();
   </script>
 </body>
 </html>
