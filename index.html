@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+     const xhr = new XMLHttpRequest();
+      let requestMethod = "GET"
+      const keyName = `cI4AXgrTB0ysM8Rn01vy6q2u1edtzrl1b1aeyqtRsBtBIu3QJHsibkHBpe4MkJE%2FmMy%2B0veonIC65ssZPaERLA%3D%3D`
+
+      xhr.open(requestMethod, `http://apis.data.go.kr/6300000/eventDataService/eventDataListJson?
+      serviceKey=${keyName}&numOfRows=10&pageNo=1`, true)
+      // console.dir(xhr);
+      xhr.send();
+      xhr.addEventListener("load", () => {
+        if(xhr.status === 200){
+          console.log("데이터 받은 후 조회");
+
+          const result = JSON.parse(xhr.responseText);
+          console.dir(typeof(result))
+          console.dir(result);
+          console.dir(result.msgBody);
+          const result2 = result.msgBody
+          
+          
+          for(const element of result2){
+            console.log(element.title)
+          }
+
+          const root = document.getElementById("root");
+          const ul = document.createElement("ul");
+          result.forEach((title) => { 
+            const li = document.createElement("li");
+            
+            console.log(lastresult)
+            li.textContent = lastresult;
+            ul.appendChild(li);
+          });
+          root.appendChild(ul);
+
+        }
+      });
+
+    
+    
+  </script>
+</body>
+</html>
