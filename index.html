@@ -21,27 +21,27 @@
           console.log("데이터 받은 후 조회");
 
           const result = JSON.parse(xhr.responseText);
-          console.dir(typeof(result))
-          console.dir(result);
-          console.dir(result.msgBody);
-          const result2 = result.msgBody
+          // console.dir(typeof(result));
+          // console.dir(result);
+          // console.dir(result.msgBody);
+          const result2 = result.msgBody;
           
+          const dkshel = [];
+            for(const element of result2){
+            dkshel.push(element.title);
+          };
+          console.log(dkshel);
+          // const testresult = test();
+          // console.log(testresult);
           
-          for(const element of result2){
-            console.log(element.title)
-          }
-
-          const root = document.getElementById("root");
-          const ul = document.createElement("ul");
-          result.forEach((title) => { 
-            const li = document.createElement("li");
-            
-            console.log(lastresult)
-            li.textContent = lastresult;
-            ul.appendChild(li);
-          });
-          root.appendChild(ul);
-
+          // const root = document.getElementById("root");
+          // const ul = document.createElement("ul");
+          // testresult.forEach((rufrhk) => { 
+          //   const li = document.createElement("li");
+          //   li.textContent = rufrhk;
+          //   ul.appendChild(li);
+          // });
+          // root.appendChild(ul);
         }
       });
 
